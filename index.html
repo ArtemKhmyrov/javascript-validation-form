@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        function valid (form){
+            var fail = false;
+            var name = form.name.value;
+            var Email = form.Email.value;
+            var password = form.password.value;
+            var RePassword = form.RePassword.value;
+            var state = form.state.value;
+            var reg = /([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,5})/i;
+
+
+            if (name == "" || name == " "){
+                
+            fail = "Введите имя";
+            }
+            
+            else if (reg.test(Email) == false ){
+            fail = "Вы ввели E-mail неправильно";
+            }
+
+            else if(password == ""){
+            fail = "Вы не ввели пароль";
+            }
+
+            else if(password != RePassword){
+            fail = "Пароли не совпадают";
+            }
+
+            else if(state == ""){
+            fail = "Укажите пол";
+            }
+             
+            
+            if(fail){
+                alert(fail);
+            }
+
+            else{
+                window.location = "http://google.com";
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+
+<form action="" method="post" name="test" id="form"">
+    <label for="name">Имя:</label>
+    <input type="text" name="name" placeholder="Имя" id="name"> </br ></br >
+    <label for="Email">Email:</label>
+    <input type="text" name="Email" placeholder="Email" id="Email"> </br ></br >
+    <label for="password">Пароль: </label>
+    <input type="password" name="password" placeholder="Пароль" id="password"> </br ></br >
+    <label for="RePassword">Повторите пароль:</label>
+    <input type="password" name="RePassword" placeholder="Повторите пароль" id="RePassword"> </br ></br >
+    <span>Пол: </span> 
+    <input type="radio" name="state" value="Мужской" id="male"> <label for="male">Мужской</label> 
+    <input type="radio" name="state" value="Женский" id="female"><label for="female">Женский</label> </br ></br >
+    <input type="button" name="submit"  onclick="valid(document.getElementById('form'))" value="Готово">
+</form>
+
+
+</body>
+</html>
